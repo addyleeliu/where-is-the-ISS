@@ -8,11 +8,15 @@ $(function(){
   var lat = ''; // latitude
   var lon = ''; // longitude
   var logHtml = '';
-  var currHtml = '';
+  var curr = '';
   var msg = ''; // error and complete messages
 
   updateLocation();
   setInterval(updateLocation, 5000); // Update the location every 5 seconds
+
+  function clearCurr() {
+    curr = '';
+  }
 
   function updateLocation() {
     var time = new Date(); // Get time and date information
@@ -43,22 +47,29 @@ $(function(){
           success: function(geoData) {
             console.log(geoData);
             logHtml += '<p>' + time + ': ' + 'The space station is currently ';
+            curr += '<p>The space station is currently ';
             /* Use reverse geocoding to get the names of the city and country
             that correspond to the space station coordinates */
             if (geoURL = geoData.error) { // If the geocoding API throws an error
               logHtml += 'over an ocean.</p>';
+              curr += 'over an ocean.</p>';
             } else {
               if(geoData.address.city != null) {
                 logHtml += 'over ' + geoData.address.city + ', '
+                  + geoData.address.country + '</p>';
+                curr += 'over ' + geoData.address.city + ', '
                   + geoData.address.country + '</p>';
               }
               else {
                 logHtml += 'over ' + geoData.address.state + ', '
                   + geoData.address.country + '</p>';
+                curr += 'over ' + geoData.address.state + ', '
+                  + geoData.address.country + '</p>';
               }
             }
             document.getElementById("log").innerHTML = logHtml;
-            document.getElementById("current").innerHTML = currHtml;
+            document.getElementById("current").innerHTML = curr;
+            clearCurr();
 
           },
           error: function(msg) {

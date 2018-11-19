@@ -9,8 +9,11 @@ body {
   background-color: black;
 }
 
-h1, h2 {
+h1, h2, #current > p {
   text-align: center;
+}
+
+h1, h2 {
   font-family: 'Orbitron', sans-serif;
 }
 
@@ -27,13 +30,21 @@ h1, h2, p {
   color: white;
 }
 
+#current > p {
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
 p {
   font-family: 'Open Sans', sans-serif;
-  border: solid white 1px;
   padding: 10px;
   margin-left: 15%;
   margin-right: 15%;
   font-size: 18px;
+}
+
+#log > p {
+  border: solid white 1px;
 }
 
 img {
@@ -56,6 +67,9 @@ img {
     margin-left: 10%;
     margin-right: 10%;
   }
+  #current > p {
+    margin-bottom: 1%;
+  }
 }
 
 @media screen and (max-width: 700px) {
@@ -63,11 +77,17 @@ img {
     margin-left: 8%;
     margin-right: 8%;
   }
+  #current > p {
+    margin-bottom: 2%;
+  }
 }
 
 @media screen and (max-width: 655px) {
   h1 {
     margin: 5vh 5vw 5vh 5vw;
+  }
+  #current > p {
+    margin-bottom: 3%;
   }
 }
 
@@ -77,16 +97,25 @@ img {
     margin-left: 5%;
     margin-right: 5%;
   }
+  #current > p {
+    margin-bottom: 4%;
+  }
 }
 
 @media screen and (max-width: 418px) {
   h1 {
     font-size: 5vmax;
   }
+  #current > p {
+    margin-bottom: 6%;
+  }
 }
 
 @media screen and (max-width: 348px) {
   h1 {
     font-size: 4vmax;
+  }
+  #current > p {
+    margin-bottom: 8%;
   }
 }
